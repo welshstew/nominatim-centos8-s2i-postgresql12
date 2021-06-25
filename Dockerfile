@@ -48,7 +48,8 @@ RUN yum -y install epel-release redhat-rpm-config dnf-plugins-core && \
     yum -qy module disable postgresql && \
     yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm && \
     yum config-manager --set-enabled powertools && \
-    yum config-manager --set-enabled pgdg12
+    yum config-manager --set-enabled pgdg12 && \
+    yum clean all
 
 #libpq-devel-13.2-1.el8.x86_64
 RUN INSTALL_PKGS="bzip2 lbzip2 rsync tar gettext bind-utils nss_wrapper postgresql12-contrib postgresql12-devel postgis30_12 wget git cmake make gcc gcc-c++ libtool policycoreutils-python-utils llvm-toolset ccache clang-tools-extra php-pgsql php php-intl php-json bzip2-devel proj-devel boost-devel python3-pip python3-setuptools python36-devel expat-devel zlib-devel glibc-static libicu-devel" && \
