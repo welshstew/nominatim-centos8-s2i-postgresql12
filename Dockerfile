@@ -83,15 +83,21 @@ RUN /usr/libexec/fix-permissions ${APP_DATA} && \
     usermod -a -G root postgres && \
     /usr/libexec/fix-permissions /usr/share/container-scripts/postgresql
 
-USER 26
-
 ENV PATH="/usr/pgsql-12/bin/:$PATH"
 
-RUN pip3 install --user psycopg2 python-dotenv psutil Jinja2 PyICU
+RUN pip3 install psycopg2 python-dotenv psutil Jinja2 PyICU
 
-USER root
+# USER 26
 
-RUN wget https://nominatim.org/release/Nominatim-3.7.2.tar.bz2  && \ 
+
+
+# RUN pip3 install --user psycopg2 python-dotenv psutil Jinja2 PyICU
+
+# ENV PYTHONPATH=/opt/app-root/src
+
+# USER root
+
+RUN wget -q https://nominatim.org/release/Nominatim-3.7.2.tar.bz2  && \ 
     tar xf Nominatim-3.7.2.tar.bz2 && \
     rm Nominatim-3.7.2.tar.bz2
 
